@@ -8,7 +8,7 @@ fi
 BRANCH_NAME=$(git symbolic-ref --short HEAD)
 BRANCH_EXCLUDED=$(printf "%s\n" "${BRANCHES_TO_SKIP[@]}" | grep -c "^$BRANCH_NAME$")
 
-# Trim it down to get the parts we're interested in
+# Trim it down to get the parts we're interested in excape slashes to add entire branch name to commit
 TRIMMED=$(echo $BRANCH_NAME | sed -e "s/\//\\\\\//")
 
 # If it isn't excluded, preprend the trimmed branch identifier to the given message
